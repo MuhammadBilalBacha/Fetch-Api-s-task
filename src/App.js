@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import { Fragment, useEffect, useState } from "react";
+import "./App.css";
+import Card from "./Component/Card";
 
 function App() {
+  const [content, setContent] = useState();
+  useEffect(() => {
+    const fetchData = () => {
+      axios
+        .get(
+          "https://www.khawateenrozgar.com/webapi/api/job/63db70f8443f799ebc7df047"
+        )
+        .then((res) => {
+          setContent(res);
+          console.log(res.data.data);
+        });
+    };
+    fetchData();
+  }, [content?.data?.data?.title]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Card
+        designation={content?.data?.data?.title}
+        cityName={content?.data?.data?.city}
+        comanyName={content?.data?.data?.company}
+      />
+    </Fragment>
   );
 }
 
