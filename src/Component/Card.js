@@ -1,6 +1,5 @@
 import React from "react";
 import image from "../Assets/KhwateenRozgar.jpeg";
-// import loader from "../Assets/loader.gif";
 
 const Card = (props) => {
   return (
