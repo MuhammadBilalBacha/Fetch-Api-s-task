@@ -36,6 +36,7 @@
     <!-- <img src="../src/Assets/KhwateenRozgar.jpeg" alt=""> -->
     <div id="root"></div>
     <script>
+      const headElement = document.getElementsByTagName("head")[0];
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
       const img = new Image();
@@ -70,18 +71,18 @@
             const ogImageTag = document.createElement("meta");
             ogImageTag.setAttribute("property", "og:image");
             ogImageTag.setAttribute("content", imageData);
-            document.head.appendChild(ogImageTag);
+            headElement.appendChild(ogImageTag);
 
             // Set the `og:image:width` and `og:image:height` tags to the dimensions of the generated image
             const ogImageWidthTag = document.createElement("meta");
             ogImageWidthTag.setAttribute("property", "og:image:width");
             ogImageWidthTag.setAttribute("content", "1200");
-            document.head.appendChild(ogImageWidthTag);
+            headElement.appendChild(ogImageWidthTag);
 
             const ogImageHeightTag = document.createElement("meta");
             ogImageHeightTag.setAttribute("property", "og:image:height");
             ogImageHeightTag.setAttribute("content", "600");
-            document.head.appendChild(ogImageHeightTag);
+            headElement.appendChild(ogImageHeightTag);
           };
         });
     </script>
